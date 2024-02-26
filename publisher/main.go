@@ -79,5 +79,5 @@ func main() {
 		fmt.Println("\033[31mMissing csv path\033[0m")
 		os.Exit(1)
 	}
-	pubMessage("ponderada3/data", os.Args[2], &BROKER_URL, &MQTT_USER, &MQTTT_PASSWORD)
+	pubMessage("ponderada3/data", os.Args[len(os.Args)-1], &BROKER_URL, &MQTT_USER, &MQTTT_PASSWORD)
 }
