@@ -61,5 +61,7 @@ O projeto é composto por dois módulos go, o publisher e o subscriber (ambos po
 
 ## 4. Demonstração do Funcionamento
 
-https://github.com/Lemos1347/inteli-modulo-9-ponderada-1/assets/99190347/9af1a3c8-fc05-4551-bc9c-323ec10e0d7f
+https://github.com/Lemos1347/inteli-modulo-9-ponderada-3/assets/99190347/d11fb14d-3fdc-4893-ad67-79b48b536722
+
+
 
