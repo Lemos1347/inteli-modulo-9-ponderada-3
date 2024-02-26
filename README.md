@@ -8,10 +8,10 @@ Este projeto visa criar um simulador de dispositivos IoT que utiliza o protocolo
 
 ### Pré-requisitos
 
-- Credenciais de um broker remoto que tenha conexão TLS (recomendamos [HiveMQ](https://www.hivemq.com/) 
+- Credenciais de um broker remoto que tenha conexão TLS (recomendamos [HiveMQ](https://www.hivemq.com/))
 
->[!IMPORTANT]
->Caso queira editar o código ou rodá-lo de outra maneira, tenha instalado [go](https://go.dev/doc/install) em sua máquina.
+> [!IMPORTANT]
+> Caso queira editar o código ou rodá-lo de outra maneira, tenha instalado [go](https://go.dev/doc/install) em sua máquina.
 
 ### Instalação
 
@@ -22,7 +22,7 @@ git clone https://github.com/Lemos1347/inteli-modulo-9-ponderada-3
 cd inteli-modulo-9-ponderada-3
 ```
 
->[!NOTE]
+> [!NOTE]
 > Caso queira editar o projeto, lembre de instalar as depencias de cada módulo:
 >
 > ```bash
@@ -32,6 +32,7 @@ cd inteli-modulo-9-ponderada-3
 ### Execução
 
 Crie um arquivo `.env` na raiz do projeto. Esse arquivo deve ter o seguinte formato e você deve preencher com as credenciais do seu broker:
+
 ```env
 BROKER_URL=<URL DO SEU BROKER>
 MQTT_PUB=<USER DE PUB DO SEU BROKER>
@@ -43,13 +44,15 @@ MQTT_SUB_PASSWORD=<PASSWORD DO SUB DO SEU BROKER>
 E depois em terminais diferentes execute o publisher (lembrando que para ambos deve informar o caminho para o arquivo `.env`, e para o publisher é necessário informar o path correto para o csv contendo os dados simulado do sensor) e o subscriber:
 
 - Publisher:
+
 ```bash
-./publisher ./.env ./data/dados_sensor_radiacao_solar.csv
+./run_pub ./.env ./data/dados_sensor_radiacao_solar.csv
 ```
 
 - Subscriber
+
 ```bash
-./subscriber ./.env
+./run_sub ./.env
 ```
 
 ## 3. Estrutura do Projeto
@@ -64,6 +67,3 @@ O projeto é composto por dois módulos go, o publisher e o subscriber (ambos po
 ## 4. Demonstração do Funcionamento
 
 https://github.com/Lemos1347/inteli-modulo-9-ponderada-3/assets/99190347/d11fb14d-3fdc-4893-ad67-79b48b536722
-
-
-
