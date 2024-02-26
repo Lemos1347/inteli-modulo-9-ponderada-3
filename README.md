@@ -1,4 +1,4 @@
-# Simulador de Dispositivos IoT
+# Simulador de Dispositivos IoT integrado a um broker remoto
 
 ## 1. Objetivo
 
@@ -8,7 +8,7 @@ Este projeto visa criar um simulador de dispositivos IoT que utiliza o protocolo
 
 ### Pré-requisitos
 
-- Broker MQTT ([Mosquitto](https://mosquitto.org/download/) ou outro de sua preferência)
+- Credenciais de um broker remoto que tenha conexão TLS (recomendamos [HiveMQ](https://www.hivemq.com/) 
 
 >[!IMPORTANT]
 >Caso queira editar o código ou rodá-lo de outra maneira, tenha instalado [go](https://go.dev/doc/install) em sua máquina.
@@ -18,8 +18,8 @@ Este projeto visa criar um simulador de dispositivos IoT que utiliza o protocolo
 Clone o repositório para a sua máquina local:
 
 ```bash
-git clone https://github.com/Lemos1347/inteli-modulo-9-ponderada-1
-cd inteli-modulo-9-ponderada-1
+git clone https://github.com/Lemos1347/inteli-modulo-9-ponderada-3
+cd inteli-modulo-9-ponderada-3
 ```
 
 >[!NOTE]
@@ -31,22 +31,25 @@ cd inteli-modulo-9-ponderada-1
 
 ### Execução
 
-Para iniciar o simulador, execute primeiro o seu broker, caso seja mosquitto, utilize nossa configuração personalizada:
-
-```bash
-mosquitto -c mosquitto.conf
+Crie um arquivo `.env` na raiz do projeto. Esse arquivo deve ter o seguinte formato e você deve preencher com as credenciais do seu broker:
+```env
+BROKER_URL=<URL DO SEU BROKER>
+MQTT_PUB=<USER DE PUB DO SEU BROKER>
+MQTT_PUB_PASSWORD=<PASSWORD DO PUB DO SEU BROKER>
+MQTT_SUB=<USER DE SUB DO SEU BROKER>
+MQTT_SUB_PASSWORD=<PASSWORD DO SUB DO SEU BROKER>
 ```
 
-E depois em terminais diferentes execute o publisher (lembrando que para o publisher é necessário informar o path correto para o csv contendo os dados simulado do sensor) e o subscriber:
+E depois em terminais diferentes execute o publisher (lembrando que para ambos deve informar o caminho para o arquivo `.env`, e para o publisher é necessário informar o path correto para o csv contendo os dados simulado do sensor) e o subscriber:
 
 - Publisher:
 ```bash
-./publisher/publisher ./data/dados_sensor_radiacao_solar.csv
+./publisher ./.env ./data/dados_sensor_radiacao_solar.csv
 ```
 
 - Subscriber
 ```bash
-./subscriber/subscriber
+./subscriber ./.env
 ```
 
 ## 3. Estrutura do Projeto
@@ -57,7 +60,6 @@ O projeto é composto por dois módulos go, o publisher e o subscriber (ambos po
 - `publisher/main.go`: Arquivo principal que inicia a parte de publisher do simulador.
 - `publisher/solar_sensor.go`: Simula a geração de dados para um sensor de radiação solar.
 - `data/dados_sensor_radiacao_solar.csv`: Contém dados simulados para o sensor de radiação solar.
-- `mosquitto.conf`: Configuração para o broker MQTT Mosquitto (se aplicável).
 
 ## 4. Demonstração do Funcionamento
 
