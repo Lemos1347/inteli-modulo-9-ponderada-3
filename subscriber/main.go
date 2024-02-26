@@ -63,6 +63,5 @@ func init() {
 }
 
 func main() {
-	log.Printf("ENV vars:\n%s\n%s\n%s", BROKER_URL, MQTT_USER, MQTTT_PASSWORD)
 	runSub("ponderada3/data", messagePubHandler, &BROKER_URL, &MQTT_USER, &MQTTT_PASSWORD)
 }
